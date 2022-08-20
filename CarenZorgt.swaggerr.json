@@ -1,0 +1,160 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "CarenZorgt Events",
+    "description": "Download CarenZorgt Calendar Events"
+  },
+  "host": "www.carenzorgt.nl",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/api/v1/tokens": {
+      "post": {
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "summary": "Get Tokens",
+        "description": "Get Tokens",
+        "operationId": "GetToken",
+        "parameters": [
+          {
+            "name": "grant_type",
+            "type": "string",
+            "in": "formData",
+            "default": "password",
+            "required": true,
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "format": "password"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "token",
+                  "title": "token",
+                  "format": "password",
+                  "x-ms-visibility": "important"
+                },
+                "elevated": {
+                  "type": "boolean",
+                  "description": "elevated",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "enum": [
+                    "",
+                    "true",
+                    "false"
+                  ]
+                },
+                "_links": {
+                  "type": "object",
+                  "properties": {
+                    "self": {
+                      "type": "object",
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "href",
+                          "title": "",
+                          "x-ms-visibility": "internal"
+                        }
+                      },
+                      "description": "self"
+                    },
+                    "elevate_with_code": {
+                      "type": "object",
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "href",
+                          "title": "",
+                          "x-ms-visibility": "internal"
+                        }
+                      },
+                      "description": "elevate_with_code"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "href",
+                          "title": "",
+                          "x-ms-visibility": "internal"
+                        }
+                      },
+                      "description": "user"
+                    }
+                  },
+                  "description": "_links"
+                }
+              }
+            }
+          }
+        },
+        "x-ms-visibility": "advanced"
+      }
+    },
+    "/api/v1/events": {
+      "get": {
+        "summary": "GetEvents",
+        "description": "GetEvents",
+        "operationId": "GetData",
+        "parameters": [
+          {
+            "name": "about_person",
+            "in": "query",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Bearer",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}
