@@ -1,0 +1,9 @@
+{
+  "connectorId": "shared_carenzorgt-5f8d0453f9eadd5949-5f256c363002fc154b",
+  "environment": "Default-dd1acdad-7540-490a-8914-18a897793fa2",
+  "apiProperties": "apiProperties.json",
+  "apiDefinition": "apiDefinition.swagger.json",
+  "icon": "icon.png",
+  "powerAppsUrl": "https://api.powerapps.com",
+  "powerAppsApiVersion": "2016-11-01"
+}

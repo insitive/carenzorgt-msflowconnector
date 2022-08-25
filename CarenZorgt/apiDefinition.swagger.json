@@ -1,0 +1,167 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "CarenZorgt Events",
+    "description": "Download CarenZorgt Calendar Events"
+  },
+  "host": "www.carenzorgt.nl",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/api/v1/tokens": {
+      "post": {
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "summary": "Inlogcode CarenZorgt verkrijgen",
+        "description": ">- Inlogcode Carenzorgt verkrijgen. Dit is een Bearer token die wordt gegenereerd naar aanleiding van login en wachtwoord",
+        "operationId": "GetToken",
+        "parameters": [
+          {
+            "name": "grant_type",
+            "x-ms-summary": "Grant Type",
+            "type": "string",
+            "in": "formData",
+            "default": "password",
+            "required": true,
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "email",
+            "x-ms-summary": "E-mailadres",
+            "type": "string",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "name": "password",
+            "x-ms-summary": "Wachtwoord",
+            "description": "wachtwoord",
+            "format": "password",
+            "type": "string",
+            "in": "formData",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "BearerToken",
+                  "title": "CarenZorgt Toegangscode",
+                  "format": "password",
+                  "x-ms-visibility": "important"
+                },
+                "elevated": {
+                  "type": "boolean",
+                  "description": "elevated",
+                  "title": "",
+                  "x-ms-visibility": "internal",
+                  "enum": [
+                    "",
+                    "true",
+                    "false"
+                  ]
+                },
+                "_links": {
+                  "type": "object",
+                  "properties": {
+                    "self": {
+                      "type": "object",
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "href",
+                          "title": "",
+                          "x-ms-visibility": "internal"
+                        }
+                      },
+                      "description": "self"
+                    },
+                    "elevate_with_code": {
+                      "type": "object",
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "href",
+                          "title": "",
+                          "x-ms-visibility": "internal"
+                        }
+                      },
+                      "description": "elevate_with_code"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "href": {
+                          "type": "string",
+                          "description": "href",
+                          "title": "",
+                          "x-ms-visibility": "internal"
+                        }
+                      },
+                      "description": "user"
+                    }
+                  },
+                  "description": "_links"
+                }
+              }
+            }
+          }
+        },
+        "x-ms-visibility": "advanced"
+      }
+    },
+    "/api/v1/events": {
+      "get": {
+        "summary": "Agenda Carenzorgt Ophalen",
+        "description": "Agenda Carenzorgt Ophalen",
+        "operationId": "GetData",
+        "parameters": [
+          {
+            "name": "about_person",
+            "x-ms-summary": "Agenda voor Persoon",
+            "in": "query",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start_date",
+            "x-ms-summary": "Startdatum",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "x-ms-summary": "Aantal dagen",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {},
+  "security": [],
+  "tags": []
+}

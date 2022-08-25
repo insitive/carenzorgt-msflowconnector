@@ -1,0 +1,51 @@
+{
+  "properties": {
+    "connectionParameters": {
+		"caren_email": {
+                "type": "string",
+                "uiDefinition": {
+                    "displayName": "CarenZorgt E-mail",
+                    "description": "The e-mail for CarenZorgt",
+                    "tooltip": "Provide your CarenZorgt E-mail",
+                    "constraints": {
+                        "required": "true"
+                    }
+                }
+            },
+            "caren_password": {
+                "type": "securestring",
+                "uiDefinition": {
+                    "displayName": "CarenZorgt Password",
+                    "description": "The password for CarenZorgt",
+                    "tooltip": "Provide your CarenZorgt password",
+                    "constraints": {
+                        "required": "true"
+                    }
+                }
+            }},
+    "iconBrandColor": "#007ee5",
+    "capabilities": [],
+    "policyTemplateInstances": [
+      {
+        "templateId": "setheader",
+        "title": "HTTPS",
+        "parameters": {
+          "x-ms-apimTemplateParameter.name": "content-type",
+          "x-ms-apimTemplateParameter.value": "application/x-www-form-urlencoded",
+          "x-ms-apimTemplateParameter.existsAction": "override",
+          "x-ms-apimTemplate-policySection": "Request"
+        }
+      },
+      {
+        "templateId": "setqueryparameter",
+        "title": "grant_type",
+        "parameters": {
+          "x-ms-apimTemplateParameter.name": "grant_type",
+          "x-ms-apimTemplateParameter.value": "password",
+          "x-ms-apimTemplateParameter.existsAction": "override"
+        }
+      }
+    ],
+    "publisher": "J.W. van der Schors"
+  }
+}
